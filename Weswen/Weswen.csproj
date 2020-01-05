@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>Weswen</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Standard library utility collection used for generating dummy objects, working with docx tables, etc.</Description>
+    <Product>Weswen</Product>
+    <Authors>Josip Horvat</Authors>
+    <Version>1.0.4</Version>
+    <PackageId>Weswen</PackageId>
+    <PackageProjectUrl>https://github.com/HorvatJosip/Weswen</PackageProjectUrl>
+    <PackageTags>Horvat, Josip, Generating, DocX, Tables, Utils, Utilities, Weswen, Framework, Generator</PackageTags>
+    <LangVersion>8.0</LangVersion>
+    <PackageLicenseFile>license.txt</PackageLicenseFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\Weswen.xml</DocumentationFile>
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>F:\Programiranje\C# Projects\Libraries\Standard\Weswen\Weswen\Weswen.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DocXCore" Version="1.0.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\license.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,2010 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Weswen</name>
+    </assembly>
+    <members>
+        <member name="T:Weswen.NotGeneratedAttribute">
+            <summary>
+            Describes that this property / field is not filled by
+            the <see cref="T:Weswen.Generator"/>.
+            </summary>
+        </member>
+        <member name="T:Weswen.TableCellAttribute">
+            <summary>
+            Defines that this property is a cell in a Word Document table.
+            </summary>
+        </member>
+        <member name="M:Weswen.TableCellAttribute.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Defines a cell in the table.
+            </summary>
+            <param name="row">Row position in the table. Minimum: 1.</param>
+            <param name="column">Column position in the table. Minimum: 1.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"/>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.AddNewLinesPerParagraph">
+            <summary>
+            Once the paragraphs are being read, should the <see cref="P:System.Environment.NewLine"/>
+            be appended at the end of the paragraph?
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.MaxRowCharacters">
+            <summary>
+            Defines how many characters can this cell take before splitting into multiple paragraphs.
+            Needs to be at least 1 for this feature to be included.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.Content">
+            <summary>
+            Optional property for setting the already known content.
+            If this is null, property's value is used.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.Paragraphs">
+            <summary>
+            Collection of strings in case the content needs to be split into
+            multiple paragraphs.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.NumParagraphs">
+            <summary>
+            Number of paragraphs to have in this cell no mather what.
+            Needs to be at least 1 for this feature to be included.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.NumParagraphsExceptions">
+            <summary>
+            Strings that will affect the <see cref="P:Weswen.TableCellAttribute.NumParagraphs"/>. For example,
+            by default, "\n" will be in here, so if <see cref="P:Weswen.TableCellAttribute.NumParagraphs"/> is
+            5 and there are 2 "\n"'s found, only 3 blank paragraphs will be added.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.Format">
+            <summary>
+            Allows insertion of the content at the desired location.
+            Example: "${0}", {0} will be replaced by the content (of <see cref="P:Weswen.TableCellAttribute.Content"/> or property value).
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.PropertyValueOverAttributeValue">
+            <summary>
+            Should the value of the property be used if it is available even
+            if the <see cref="P:Weswen.TableCellAttribute.Content"/> is defined?
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.Row">
+            <summary>
+            Row position in the table.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.RowIndex">
+            <summary>
+            Row position in the table by index.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.Column">
+            <summary>
+            Column position in the table.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.ColumnIndex">
+            <summary>
+            Column position in the table by index.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.RowSpan">
+            <summary>
+            How many rows this cell takes (merges with). Minimum: 1.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.RowSpanEnd">
+            <summary>
+            Gets the end position for the row span.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.ColumnSpan">
+            <summary>
+            How many columns this cell takes (merges with). Minimum: 1.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.ColumnSpanEnd">
+            <summary>
+            Gets the end position for the column span.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.TextSize">
+            <summary>
+            Size of the content inside the cell.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.Bold">
+            <summary>
+            Should the text be bold?
+            </summary>
+        </member>
+        <member name="P:Weswen.TableCellAttribute.TextSpacing">
+            <summary>
+            Spacing between the characters of the cell content.
+            </summary>
+        </member>
+        <member name="M:Weswen.TableCellAttribute.ShouldWrap(System.Int32)">
+            <summary>
+            Checks if the content in the cell should wrap.
+            </summary>
+            <param name="contentLength">Length of the cell content.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.TableCellAttribute.Equals(System.Object)">
+            <summary>
+            Checks if the given object equals the current one.
+            </summary>
+            <param name="obj">Object to check if it is equal to the current one.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.TableCellAttribute.GetHashCode">
+            <summary>
+            Default hash function.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Weswen.TableModelAttribute">
+            <summary>
+            Defines that this class or struct represents a Word Document table.
+            </summary>
+        </member>
+        <member name="M:Weswen.TableModelAttribute.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Defines a table in the Word Document.
+            </summary>
+            <param name="numRows">Number of rows that the table will have. Minimum: 1.</param>
+            <param name="numColumns">Number of columns that the table will have. Minimum: 1.</param>
+        </member>
+        <member name="P:Weswen.TableModelAttribute.NumRows">
+            <summary>
+            Number of rows that the table will have.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableModelAttribute.NumColumns">
+            <summary>
+            Number of columns that the table will have.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableModelAttribute.ColumnWidths">
+            <summary>
+            Widths of the columns.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableModelAttribute.Alignment">
+            <summary>
+            Defines the alignment of the table.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableModelAttribute.NumParagraphsAfter">
+            <summary>
+            How many paragraphs should be added after the table.
+            </summary>
+        </member>
+        <member name="P:Weswen.TableModelAttribute.PageBreakAfter">
+            <summary>
+            If there are multiple tables, after how many tables should there be a page break?
+            Needs to be at least 1 for this feature to be included.
+            </summary>
+        </member>
+        <member name="T:Weswen.BaseSeparatorConverter`1">
+            <summary>
+            Converter used for converting an object into a separator separated line
+            and vice versa.
+            </summary>
+            <typeparam name="T">Type that the converter is supposed to convert.</typeparam>
+        </member>
+        <member name="F:Weswen.BaseSeparatorConverter`1._propertyValidator">
+            <summary>
+            Validator (filter) used while getting the properties.
+            If this returns false, property is skipped.
+            If this is null, none of the properties are skipped.
+            </summary>
+        </member>
+        <member name="P:Weswen.BaseSeparatorConverter`1.Separator">
+            <summary>
+            Separator used for separating items in a line.
+            </summary>
+        </member>
+        <member name="M:Weswen.BaseSeparatorConverter`1.ToLine(`0)">
+            <summary>
+            Converts the given item into a line separated by <see cref="P:Weswen.BaseSeparatorConverter`1.Separator"/>.
+            By default, just separates values stored in properties using <see cref="M:System.String.Join(System.String,System.Object[])"/>.
+            </summary>
+            <param name="item">Item to convert into a line.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.BaseSeparatorConverter`1.FromLine(System.String)">
+            <summary>
+            Converts the given line separated by <see cref="P:Weswen.BaseSeparatorConverter`1.Separator"/> into
+            the item of type <typeparamref name="T"/>. By default, splits by the
+            <see cref="P:Weswen.BaseSeparatorConverter`1.Separator"/> and stores values in properties.
+            </summary>
+            <param name="line">Line to convert into an item of type <typeparamref name="T"/>.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Weswen.BaseSeparatorConverter`2">
+            <summary>
+            Converter used for converting an object into a separator separated line
+            and vice versa. Provides an instance of the separator.
+            </summary>
+            <typeparam name="T">Converter's type (the one inheriting this class).</typeparam>
+            <typeparam name="U">Type that the converter is supposed to convert.</typeparam>
+        </member>
+        <member name="P:Weswen.BaseSeparatorConverter`2.Instance">
+            <summary>
+            Instance of the separator converter.
+            </summary>
+        </member>
+        <member name="T:Weswen.UnknownEnumValueException">
+            <summary>
+            Exception that should be thrown when an unknown enum value was specified.
+            </summary>
+        </member>
+        <member name="M:Weswen.UnknownEnumValueException.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Weswen.UnknownEnumValueException.#ctor(System.String)">
+            <summary>
+            Generates an instance with a specified message.
+            </summary>
+        </member>
+        <member name="T:Weswen.CellExtensions">
+            <summary>
+            Extension methods for <see cref="T:Novacode.Cell"/>.
+            </summary>
+        </member>
+        <member name="M:Weswen.CellExtensions.InsertParagraphAt(Novacode.Cell,System.Int32,System.String,Novacode.Formatting,System.Boolean)">
+            <summary>
+            Inserts a paragraph at the given index. If one exists at the index, it is replaced,
+            otherwise, a new one is inserted.
+            </summary>
+            <param name="tableCell">Cell of the table.</param>
+            <param name="index">Index to insert to.</param>
+            <param name="text">Paragraph content.</param>
+            <param name="formatting">Cell formatting.</param>
+            <param name="trackChanges">Should the changes be tracked?</param>
+            <exception cref="T:System.IndexOutOfRangeException"/>
+        </member>
+        <member name="M:Weswen.CellExtensions.Text(Novacode.Cell)">
+            <summary>
+            Gets the text that is inside the cell (from the paragraphs).
+            </summary>
+            <param name="tableCell">Cell of the table to get the text from.</param>
+            <returns></returns>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.CellExtensions.SetContent(Novacode.Cell,System.Object,Weswen.TableCellAttribute,System.Reflection.PropertyInfo,Novacode.Formatting,Weswen.IWordWrapper)">
+            <summary>
+            Sets the content of the cell.
+            </summary>
+            <param name="tableCell">Cell to set the content of.</param>
+            <param name="tableModel">Table model to get the value from.</param>
+            <param name="cell">Information about the table cell.</param>
+            <param name="prop">Property of the table model this cell belongs to.</param>
+            <param name="formatting">Formatting for the table cell.</param>
+            <param name="wordWrapper">String wrapping helper.</param>
+        </member>
+        <member name="M:Weswen.CellExtensions.ConfigureNumParagraphs(Novacode.Cell,Weswen.TableCellAttribute)">
+            <summary>
+            Configures the number of paragraphs of the cell if the 
+            <see cref="P:Weswen.TableCellAttribute.NumParagraphs"/> is at least 1.
+            </summary>
+            <param name="tableCell">Table cell to configure the number of paragraphs for.</param>
+            <param name="cell">Information about the table cell.</param>
+        </member>
+        <member name="T:Weswen.CollectionExtensions">
+            <summary>
+            Extension methods for collections (<see cref="T:System.Collections.IEnumerable"/> and beyond).
+            </summary>
+        </member>
+        <member name="M:Weswen.CollectionExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Determines if a collection is null or has no elements.
+            </summary>
+            <typeparam name="T">Types stored in the collection.</typeparam>
+            <param name="collection">Collection to check.</param>
+            <returns>Whether or not the collection is null or empty.</returns>
+        </member>
+        <member name="M:Weswen.CollectionExtensions.GetRandomItem``1(System.Collections.Generic.IEnumerable{``0},``0[])">
+            <summary>
+            Gets a random item from the collection.
+            </summary>
+            <typeparam name="T">Types stored in the collection.</typeparam>
+            <param name="collection">Collection of items to get the random value from.</param>
+            <param name="unwantedItems">Items (if any) that you want to exclude.</param>
+            <returns>Random item from the collection</returns>
+        </member>
+        <member name="M:Weswen.CollectionExtensions.HasSameElementsAs``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Checks if the two collections are equal in both count and elements.
+            <para>The order doesn't matter.</para>
+            </summary>
+            <typeparam name="T">Types in the collections.</typeparam>
+            <param name="first">First collection.</param>
+            <param name="second">Collection to compare against.</param>
+            <returns>Whether or not the two collection have same elements.</returns>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.CollectionExtensions.In``1(``0,``0[])">
+            <summary>
+            Checks if the item is inside a collection of values.
+            </summary>
+            <typeparam name="T">Type to check.</typeparam>
+            <param name="item">Item to check.</param>
+            <param name="targetValues">Collection to check the item against.</param>
+            <exception cref="T:System.NullReferenceException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="T:Weswen.ExceptionThrowsingExtensions">
+            <summary>
+            Extension methods used for throwing exceptions.
+            </summary>
+        </member>
+        <member name="M:Weswen.ExceptionThrowsingExtensions.ThrowIfNull(System.Object,System.String)">
+            <summary>
+            Extension for throwing <see cref="T:System.NullReferenceException"/> or
+            <see cref="T:System.ArgumentNullException"/> if <paramref name="paramName"/> is provided.
+            </summary>
+            <param name="obj">Object to test if it is null.</param>
+            <param name="paramName">Name of the parameter to test (if the provided object is a parameter / method argument).</param>
+            <exception cref="T:System.NullReferenceException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Weswen.ExceptionThrowsingExtensions.ThrowIfInvalid``2(``0,System.Func{``0,System.Boolean},System.Object[])">
+            <summary>
+            Throws an exception if the <paramref name="validityCheck"/> returns false.
+            </summary>
+            <typeparam name="TObj">Type of object.</typeparam>
+            <typeparam name="TException">Type of exception.</typeparam>
+            <param name="obj">Object to test.</param>
+            <param name="validityCheck">Validation for the object.</param>
+            <param name="exceptionParameters">Optional parameters for the exception.</param>
+            <exception cref="T:System.Exception"/>
+        </member>
+        <member name="T:Weswen.NumberExtensions">
+            <summary>
+            Extension methods for numbers (<see cref="T:System.Double"/>, <see cref="T:System.Int32"/>, ...).
+            </summary>
+        </member>
+        <member name="M:Weswen.NumberExtensions.Between(System.Decimal,System.Decimal,System.Decimal,Weswen.InclusionOptions)">
+            <summary>
+            Determines if a number is in the interval.
+            </summary>
+            <param name="number">Number to test.</param>
+            <param name="left">Left side of the interval.</param>
+            <param name="right">Right side of the interval.</param>
+            <param name="options">Interval inclusion option.</param>
+            <exception cref="T:Weswen.UnknownEnumValueException"/>
+        </member>
+        <member name="M:Weswen.NumberExtensions.Between(System.Double,System.Decimal,System.Decimal,Weswen.InclusionOptions)">
+            <summary>
+            Determines if a number is in the interval.
+            </summary>
+            <param name="number">Number to test.</param>
+            <param name="left">Left side of the interval.</param>
+            <param name="right">Right side of the interval.</param>
+            <param name="options">Interval inclusion option.</param>
+            <exception cref="T:Weswen.UnknownEnumValueException"/>
+        </member>
+        <member name="M:Weswen.NumberExtensions.Between(System.Single,System.Decimal,System.Decimal,Weswen.InclusionOptions)">
+            <summary>
+            Determines if a number is in the interval.
+            </summary>
+            <param name="number">Number to test.</param>
+            <param name="left">Left side of the interval.</param>
+            <param name="right">Right side of the interval.</param>
+            <param name="options">Interval inclusion option.</param>
+            <exception cref="T:Weswen.UnknownEnumValueException"/>
+        </member>
+        <member name="M:Weswen.NumberExtensions.Between(System.Int64,System.Decimal,System.Decimal,Weswen.InclusionOptions)">
+            <summary>
+            Determines if a number is in the interval.
+            </summary>
+            <param name="number">Number to test.</param>
+            <param name="left">Left side of the interval.</param>
+            <param name="right">Right side of the interval.</param>
+            <param name="options">Interval inclusion option.</param>
+            <exception cref="T:Weswen.UnknownEnumValueException"/>
+        </member>
+        <member name="M:Weswen.NumberExtensions.Between(System.Int32,System.Decimal,System.Decimal,Weswen.InclusionOptions)">
+            <summary>
+            Determines if a number is in the interval.
+            </summary>
+            <param name="number">Number to test.</param>
+            <param name="left">Left side of the interval.</param>
+            <param name="right">Right side of the interval.</param>
+            <param name="options">Interval inclusion option.</param>
+            <exception cref="T:Weswen.UnknownEnumValueException"/>
+        </member>
+        <member name="M:Weswen.NumberExtensions.Format(System.Decimal,System.Boolean)">
+            <summary>
+            Formats the number by separating thousands with the culture specific separator.
+            </summary>
+            <param name="number">Number to format.</param>
+            <param name="useDecimalPlaces">Should the decimal places be used?</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.NumberExtensions.Format(System.Double,System.Boolean)">
+            <summary>
+            Formats the number by separating thousands with the culture specific separator.
+            </summary>
+            <param name="number">Number to format.</param>
+            <param name="useDecimalPlaces">Should the decimal places be used?</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.NumberExtensions.Format(System.Single,System.Boolean)">
+            <summary>
+            Formats the number by separating thousands with the culture specific separator.
+            </summary>
+            <param name="number">Number to format.</param>
+            <param name="useDecimalPlaces">Should the decimal places be used?</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.NumberExtensions.Format(System.Int64,System.Boolean)">
+            <summary>
+            Formats the number by separating thousands with the culture specific separator.
+            </summary>
+            <param name="number">Number to format.</param>
+            <param name="useDecimalPlaces">Should the decimal places be used?</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.NumberExtensions.Format(System.Int32,System.Boolean)">
+            <summary>
+            Formats the number by separating thousands with the culture specific separator.
+            </summary>
+            <param name="number">Number to format.</param>
+            <param name="useDecimalPlaces">Should the decimal places be used?</param>
+            <returns></returns>
+        </member>
+        <member name="T:Weswen.StringExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="M:Weswen.StringExtensions.IsNullOrEmpty(System.String)">
+            <summary>
+            Indicates whether the specified string is null or a <see cref="F:System.String.Empty"/> string.
+            </summary>
+            <param name="value">The string to test.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.StringExtensions.IsNullOrWhiteSpace(System.String)">
+            <summary>
+            Indicates whether a specified string is null, empty,
+            or consists only of white-space characters.
+            </summary>
+            <param name="value">The string to test.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.StringExtensions.ReplaceIfNull(System.String,System.String)">
+            <summary>
+            If the string is null, <paramref name="newValue"/> is returned.
+            </summary>
+            <param name="value">Current value.</param>
+            <param name="newValue">Value to return if the <paramref name="value"/> is null.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.StringExtensions.ReplaceIfNullOrEmpty(System.String,System.String)">
+            <summary>
+            If the string is null or empty, <paramref name="newValue"/> is returned.
+            </summary>
+            <param name="value">Current value.</param>
+            <param name="newValue">Value to return if the <paramref name="value"/> is null or empty.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.StringExtensions.ReplaceIfNullOrWhiteSpace(System.String,System.String)">
+            <summary>
+            If the string is null or whiteSpace, <paramref name="newValue"/> is returned.
+            </summary>
+            <param name="value">Current value.</param>
+            <param name="newValue">Value to return if the <paramref name="value"/> is null or whiteSpace.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.StringExtensions.SurroundWith(System.String,System.String,System.String)">
+            <summary>
+            Takes in a string and surrounds it with two other strings.
+            </summary>
+            <param name="value">Current string.</param>
+            <param name="before">String to prepend to the current string.</param>
+            <param name="after">String to append to the current string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.StringExtensions.WithoutWhiteSpace(System.String)">
+            <summary>
+            Removes all of the whitespace from a string.
+            </summary>
+            <param name="value">String to remove the whitespace from.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.StringExtensions.IndexOfWhiteSpace(System.String)">
+            <summary>
+            Gets the index of a first whitespace character in the string.
+            </summary>
+            <param name="value">String to find the whitespace in.</param>
+            <returns></returns>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.StringExtensions.LastIndexOfWhiteSpace(System.String)">
+            <summary>
+            Gets the index of a last whitespace character in the string.
+            </summary>
+            <param name="value">String to find the whitespace in.</param>
+            <returns></returns>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.StringExtensions.SubstringCount(System.String,System.String)">
+            <summary>
+            Finds how many times does a given "target" substring occurr
+            in the current string.
+            </summary>
+            <param name="value">String to search.</param>
+            <param name="target">Substring to find the count of.</param>
+            <returns></returns>
+            <exception cref="T:System.NullReferenceException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Weswen.StringExtensions.ConvertFromString(System.String,System.Type,System.Globalization.CultureInfo,System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Converts a string into an object of the specified type.
+            </summary>
+            <param name="value">String to convert into an object.</param>
+            <param name="type">Type of object to convert the string into.</param>
+            <param name="culture">Culture used for converting to string.</param>
+            <param name="context">Context info about the <see cref="T:System.ComponentModel.TypeDescriptor"/> for the type.</param>
+            <returns></returns>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Weswen.StringExtensions.ConvertFromString``1(System.String,System.Globalization.CultureInfo,System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Converts a string into an object of the specified type.
+            </summary>
+            <typeparam name="T">Type of object to convert the string into.</typeparam>
+            <param name="value">String to convert into an object.</param>
+            <param name="culture">Culture used for converting to string.</param>
+            <param name="context">Context info about the <see cref="T:System.ComponentModel.TypeDescriptor"/> for the type <typeparamref name="T"/>.</param>
+            <returns></returns>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Weswen.StringExtensions.ReplaceWhiteSpace(System.String,System.String)">
+            <summary>
+            Replaces whitespace inside a string with a given string.
+            </summary>
+            <param name="value">String to replace the whitespace in.</param>
+            <param name="with">Replacement for whitespace.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.StringExtensions.Unformat(System.String,System.String)">
+            <summary>
+            Takes the formatted string in with its format and replaces all
+            of the fixed parts that are defined by the format.
+            </summary>
+            <param name="value">String to unformat.</param>
+            <param name="format">Format that the string was formatted by.</param>
+            <returns></returns>
+            <exception cref="T:System.NullReferenceException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.FormatException"/>
+        </member>
+        <member name="T:Weswen.TableExtensions">
+            <summary>
+            Extension methods for <see cref="T:Novacode.Table"/>.
+            </summary>
+        </member>
+        <member name="M:Weswen.TableExtensions.RemoveEmptyParagraphs(Novacode.Table,System.Collections.Generic.IEnumerable{System.ValueTuple{System.Reflection.PropertyInfo,Weswen.TableCellAttribute}})">
+            <summary>
+            Removes all of the paragraphs in a table that are empty or just whitespace.
+            Only exception is if the cell defines exact number of paragraphs.
+            </summary>
+            <param name="table">Table to remove empty paragraphs from.</param>
+            <param name="tableCellProperties">Properties that define table cells.</param>
+        </member>
+        <member name="M:Weswen.TableExtensions.SetupColumnWidthsAndRowSpans(Novacode.Table,System.Double[],System.Collections.Generic.IEnumerable{System.ValueTuple{System.Reflection.PropertyInfo,Weswen.TableCellAttribute}})">
+            <summary>
+            Sets up the column widths (if present) and row merges (if present).
+            </summary>
+            <param name="table">Table to modify.</param>
+            <param name="columnWidths">Widths of each column of a table.</param>
+            <param name="tableCellProperties">Properties that define table cells.</param>
+        </member>
+        <member name="T:Weswen.TypeExtensions">
+            <summary>
+            Collection of extensions for the <see cref="T:System.Type"/> class.
+            </summary>
+        </member>
+        <member name="F:Weswen.TypeExtensions.DefaultPrieldFlags">
+            <summary>
+            Default <see cref="T:System.Reflection.BindingFlags"/> used for getting fields and properties.
+            </summary>
+        </member>
+        <member name="F:Weswen.TypeExtensions.DefaultMethodFlags">
+            <summary>
+            Default <see cref="T:System.Reflection.BindingFlags"/> used for getting methods.
+            </summary>
+        </member>
+        <member name="M:Weswen.TypeExtensions.GetPrields(System.Type,System.Boolean,System.Reflection.BindingFlags)">
+            <summary>
+            Used to get all the fields and properties defined by a type.
+            </summary>
+            <param name="type">Type to get the fields and properties from.</param>
+            <param name="skipBackingFields">If there are backing fields for the properties,
+            should they be skipped or not?</param>
+            <param name="flags"><see cref="T:System.Reflection.BindingFlags"/> used for accessing the fields and properties.</param>
+            <returns>Collection of fields and properties.</returns>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.TypeExtensions.GetValue(System.Type,System.String,System.Object,System.Object[])">
+            <summary>
+            Gets a value from a field or a property on a target object.
+            </summary>
+            <param name="type">Type that declares the field or property.</param>
+            <param name="prieldName">Name of the field or property to get the value from.</param>
+            <param name="target">Object to get the value from.</param>
+            <param name="indexerParams">Parameters for the indexer (if the property is an indexer).</param>
+            <returns>Value from the target object of the specified field or property</returns>
+            <exception cref="T:System.NullReferenceException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Weswen.TypeExtensions.GetAMethod(System.Type,System.String,System.Func{System.Reflection.ParameterInfo[],System.Boolean},System.Reflection.BindingFlags)">
+            <summary>
+            Gets a method based on name and conditions for the parameters.
+            </summary>
+            <param name="type">Type to get the method from.</param>
+            <param name="name">Name of the method.</param>
+            <param name="parameterConditions">Defines conditions for parameters of the method.</param>
+            <returns>Method that matches the given name and parameter conditions.</returns>
+            <param name="flags"><see cref="T:System.Reflection.BindingFlags"/> used for accessing the methods.</param>
+            <exception cref="T:System.NullReferenceException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Weswen.TypeExtensions.GetAMethod(System.Type,System.String,System.Type[])">
+            <summary>
+            Gets a method based on name and the types it takes in as parameters.
+            </summary>
+            <param name="type">Type to get the method from.</param>
+            <param name="name">Name of the method.</param>
+            <param name="parameterTypes">Types that the method takes in as parameters.</param>
+            <returns>Method that matches the given name and parameter types.</returns>
+            <exception cref="T:System.NullReferenceException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Weswen.TypeExtensions.GetCollectionInfo(System.Type)">
+            <summary>
+            Gets collection information about a type.
+            </summary>
+            <param name="type">Type to test if it is a collection.</param>
+            <returns>Instance of <see cref="T:Weswen.CollectionInfo"/> about the <paramref name="type"/>.</returns>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.TypeExtensions.GetTableCellContent(System.Reflection.PropertyInfo,System.Object,System.Boolean)">
+            <summary>
+            Gets the content of the property that should be a table cell, but if
+            <paramref name="fallbackIfNotCell"/> is true, a value from the property
+            will be read even if the property doesn't have <see cref="T:Weswen.TableCellAttribute"/>.
+            </summary>
+            <param name="property">Property to get the content from.</param>
+            <param name="instance">Instance of the object that contains the property to get the value from.</param>
+            <param name="fallbackIfNotCell">If the property doesn't have <see cref="T:Weswen.TableCellAttribute"/>,
+            should the value from the property be used? (if false, just returns null)</param>
+            <returns></returns>
+        </member>
+        <member name="T:Weswen.FileManager`1">
+            <summary>
+            Manager used for saving and loading data from files.
+            </summary>
+            <typeparam name="TKey">Type used for switching files.</typeparam>
+        </member>
+        <member name="P:Weswen.FileManager`1.BasePath">
+            <summary>
+            Working directory - path used for defining the base
+            for all of the paths provided in the methods.
+            </summary>
+        </member>
+        <member name="P:Weswen.FileManager`1.Paths">
+            <summary>
+            Paths to the files aliased by the <typeparamref name="TKey"/>.
+            </summary>
+        </member>
+        <member name="P:Weswen.FileManager`1.Serializer">
+            <summary>
+            Serializer to use during the (de)serialization.
+            </summary>
+        </member>
+        <member name="M:Weswen.FileManager`1.Serialize(System.String,System.Object,Weswen.Serializer)">
+            <summary>
+            Writes an object to the given path.
+            </summary>
+            <param name="path">Path to write the serialized object content to.</param>
+            <param name="obj">Object to serialize to the file.</param>
+            <param name="serializer">Serializer to use.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Runtime.Serialization.SerializationException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:Weswen.UnknownEnumValueException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Deserialize``1(System.String,Weswen.Serializer)">
+            <summary>
+            Reads the serialized content from the path and
+            deserializes it with the wanted serializer.
+            </summary>
+            <typeparam name="T">Type of object that was serialized to the given path.</typeparam>
+            <param name="path">Path to read the serialized content from.</param>
+            <param name="serializer">Serializer to use for content deserialization.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Runtime.Serialization.SerializationException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:Weswen.UnknownEnumValueException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Serialize(`0,System.Object,Weswen.Serializer)">
+            <summary>
+            Writes an object to the given path.
+            </summary>
+            <param name="path">Path to write the serialized object content to.</param>
+            <param name="obj">Object to serialize to the file.</param>
+            <param name="serializer">Serializer to use.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Runtime.Serialization.SerializationException"/>
+            <exception cref="T:Weswen.UnknownEnumValueException"/>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Serialize(System.String,System.Object)">
+            <summary>
+            Writes an object to the given path using the <see cref="P:Weswen.FileManager`1.Serializer"/>.
+            </summary>
+            <param name="path">Path to write the serialized object content to.</param>
+            <param name="obj">Object to serialize to the file.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Runtime.Serialization.SerializationException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:Weswen.UnknownEnumValueException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Serialize(`0,System.Object)">
+            <summary>
+            Writes an object to the given path using the <see cref="P:Weswen.FileManager`1.Serializer"/>.
+            </summary>
+            <param name="path">Path to write the serialized object content to.</param>
+            <param name="obj">Object to serialize to the file.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Runtime.Serialization.SerializationException"/>
+            <exception cref="T:Weswen.UnknownEnumValueException"/>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Deserialize``1(`0,Weswen.Serializer)">
+            <summary>
+            Reads the serialized content from the path and
+            deserializes it with the wanted serializer.
+            </summary>
+            <typeparam name="T">Type of object that was serialized to the given path.</typeparam>
+            <param name="path">Path to read the serialized content from.</param>
+            <param name="serializer">Serializer to use for content deserialization.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Runtime.Serialization.SerializationException"/>
+            <exception cref="T:Weswen.UnknownEnumValueException"/>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Deserialize``1(System.String)">
+            <summary>
+            Reads the serialized content from the path and
+            deserializes it with the wanted serializer.
+            </summary>
+            <typeparam name="T">Type of object that was serialized to the given path.</typeparam>
+            <param name="path">Path to read the serialized content from.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Runtime.Serialization.SerializationException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:Weswen.UnknownEnumValueException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Deserialize``1(`0)">
+            <summary>
+            Reads the serialized content from the path and
+            deserializes it with the wanted serializer.
+            </summary>
+            <typeparam name="T">Type of object that was serialized to the given path.</typeparam>
+            <param name="path">Path to read the serialized content from.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Runtime.Serialization.SerializationException"/>
+            <exception cref="T:Weswen.UnknownEnumValueException"/>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Write(System.String,System.String)">
+            <summary>
+            Writes all of the content as a single string to the given path.
+            </summary>
+            <param name="path">Path of the file to write the content to.</param>
+            <param name="content">Content to write into the file.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Write(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Writes all of the content as a collection of lines to the given path.
+            </summary>
+            <param name="path">Path of the file to write the content to.</param>
+            <param name="content">Content to write into the file line by line.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Write``1(System.String,System.Collections.Generic.IEnumerable{``0},Weswen.BaseSeparatorConverter{``0})">
+            <summary>
+            Writes all of the content as a collection of objects that
+            can be converted into lines to the given path.
+            </summary>
+            <param name="path">Path of the file to write the content to.</param>
+            <param name="content">Content to write into the file line by line.</param>
+            <param name="converter">Converter used for converting the object into a line.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Append(System.String,System.String)">
+            <summary>
+            Appends the given content to the end of the file at the given path.
+            </summary>
+            <param name="path">Path to append the content to.</param>
+            <param name="content">Content to append to the end of the file.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Append(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Appends the given lines to the end of the file at the given path.
+            </summary>
+            <param name="path">Path to append the content to.</param>
+            <param name="content">Lines to append to the end of the file.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Append``1(System.String,System.Collections.Generic.IEnumerable{``0},Weswen.BaseSeparatorConverter{``0})">
+            <summary>
+            Appends the given objects to the end of the file at the given path by parsing them into lines.
+            </summary>
+            <param name="path">Path to append the content to.</param>
+            <param name="content">Objects to parse and append to the end of the file.</param>
+            <param name="converter">Converter used for converting the object into a line.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.ReadAllText(System.String)">
+            <summary>
+            Reads all of the file content and returns it as a single string.
+            </summary>
+            <param name="path">Path to the file whose content needs to be read</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.ReadAllLines(System.String)">
+            <summary>
+            Reads all of the file content and returns it as a collection of lines.
+            </summary>
+            <param name="path">Path to the file whose content needs to be read</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.ReadAllObjects``1(System.String,Weswen.BaseSeparatorConverter{``0})">
+            <summary>
+            Reads all of the file content and returns it as a collection of objects
+            that can be converted from lines.
+            </summary>
+            <param name="path">Path to the file whose content needs to be read</param>
+            <param name="converter">Converter used for converting the line into an instance of the object.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Write(`0,System.String)">
+            <summary>
+            Writes all of the content as a single string to the given path.
+            </summary>
+            <param name="path">Path of the file to write the content to.</param>
+            <param name="content">Content to write into the file.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"/>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Write(`0,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Writes all of the content as a collection of lines to the given path.
+            </summary>
+            <param name="path">Path of the file to write the content to.</param>
+            <param name="content">Content to write into the file line by line.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"/>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Write``1(`0,System.Collections.Generic.IEnumerable{``0},Weswen.BaseSeparatorConverter{``0})">
+            <summary>
+            Writes all of the content as a collection of objects that
+            can be converted into lines to the given path.
+            </summary>
+            <param name="path">Path of the file to write the content to.</param>
+            <param name="content">Content to write into the file line by line.</param>
+            <param name="converter">Converter used for converting the line into an instance of the object.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"/>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Append(`0,System.String)">
+            <summary>
+            Appends the given content to the end of the file at the given path.
+            </summary>
+            <param name="path">Path to append the content to.</param>
+            <param name="content">Content to append to the end of the file.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"/>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Append(`0,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Appends the given lines to the end of the file at the given path.
+            </summary>
+            <param name="path">Path to append the content to.</param>
+            <param name="content">Lines to append to the end of the file.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"/>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.Append``1(`0,System.Collections.Generic.IEnumerable{``0},Weswen.BaseSeparatorConverter{``0})">
+            <summary>
+            Appends the given objects to the end of the file at the given path by parsing them into lines.
+            </summary>
+            <param name="path">Path to append the content to.</param>
+            <param name="content">Objects to parse and append to the end of the file.</param>
+            <param name="converter">Converter used for converting the line into an instance of the object.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"/>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.ReadAllText(`0)">
+            <summary>
+            Reads all of the file content and returns it as a single string.
+            </summary>
+            <param name="path">Path to the file whose content needs to be read</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"/>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.ReadAllLines(`0)">
+            <summary>
+            Reads all of the file content and returns it as a collection of lines.
+            </summary>
+            <param name="path">Path to the file whose content needs to be read</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"/>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.ReadAllObjects``1(`0,Weswen.BaseSeparatorConverter{``0})">
+            <summary>
+            Reads all of the file content and returns it as a collection of objects
+            that can be converted from lines.
+            </summary>
+            <param name="path">Path to the file whose content needs to be read</param>
+            <param name="converter">Converter used for converting the line into an instance of the object.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"/>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.FileManager`1.GetPath(System.String)">
+            <summary>
+            Gets the absolute path based on <see cref="P:Weswen.FileManager`1.BasePath"/>.
+            </summary>
+            <param name="providedPath">Path without the <see cref="P:Weswen.FileManager`1.BasePath"/>.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.FileManager`1.GetPath(`0)">
+            <summary>
+            Gets the absolute path based on <see cref="P:Weswen.FileManager`1.BasePath"/>.
+            </summary>
+            <param name="pathKey">Path without the <see cref="P:Weswen.FileManager`1.BasePath"/>.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Weswen.IWordWrapper">
+            <summary>
+            Used for wrapping and unwrapping strings.
+            </summary>
+        </member>
+        <member name="M:Weswen.IWordWrapper.Wrap(System.String,System.Int32)">
+            <summary>
+            Wraps the original string based on the max length.
+            Individual substrings are returned as a collection.
+            </summary>
+            <param name="original">String that needs to be wrapped.</param>
+            <param name="maxLength">Max length per row.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.IWordWrapper.Unwrap(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Unwraps the wrapped string.
+            </summary>
+            <param name="wrapped">Collection of substrings that used to
+            represent the original string.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Weswen.WordWrapper">
+            <summary>
+            Default implementation of <see cref="T:Weswen.IWordWrapper"/>.
+            </summary>
+        </member>
+        <member name="M:Weswen.WordWrapper.Wrap(System.String,System.Int32)">
+            <summary>
+            Wraps the original string based on the max length.
+            Individual substrings are returned as a collection.
+            </summary>
+            <param name="original">String that needs to be wrapped.</param>
+            <param name="maxLength">Max length per row.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.WordWrapper.Unwrap(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Unwraps the wrapped string.
+            </summary>
+            <param name="wrapped">Collection of substrings that used to
+            represent the original string.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Weswen.PeriodicTask">
+            <summary>
+            Used for running an action periodically.
+            </summary>
+        </member>
+        <member name="M:Weswen.PeriodicTask.Run(System.Action,System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>
+            Runs an action periodically with the support of cancelling.
+            </summary>
+            <param name="action">Action to run.</param>
+            <param name="period">Delay between the invocations of the action.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.PeriodicTask.Run(System.Action,System.TimeSpan)">
+            <summary>
+            Runs an action periodically.
+            </summary>
+            <param name="action">Action to run.</param>
+            <param name="period">Delay between the invocations of the action.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Weswen.Utils">
+            <summary>
+            Collection of useful methods.
+            </summary>
+        </member>
+        <member name="F:Weswen.Utils.generateMethod">
+            <summary>
+            Reference to <see cref="M:Weswen.Generator.Generate``1"/> method.
+            </summary>
+        </member>
+        <member name="P:Weswen.Utils.Rng">
+            <summary>
+            Random number generator.
+            </summary>
+        </member>
+        <member name="P:Weswen.Utils.EnglishAlphabet">
+            <summary>
+            Lowercase version of English alphabet.
+            </summary>
+        </member>
+        <member name="P:Weswen.Utils.Characters">
+            <summary>
+            Lowercase version of <see cref="P:Weswen.Utils.EnglishAlphabet"/> with few extra characters (čćžšđ).
+            </summary>
+        </member>
+        <member name="P:Weswen.Utils.Numbers">
+            <summary>
+            String of numbers 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9.
+            </summary>
+        </member>
+        <member name="P:Weswen.Utils.AlphaNumerics">
+            <summary>
+            <see cref="P:Weswen.Utils.EnglishAlphabet"/> combined with <see cref="P:Weswen.Utils.Numbers"/>.
+            </summary>
+        </member>
+        <member name="P:Weswen.Utils.AlphaNumericsWithUpper">
+            <summary>
+            <see cref="P:Weswen.Utils.EnglishAlphabet"/> both lowercase and uppercase combined with <see cref="P:Weswen.Utils.Numbers"/>.
+            </summary>
+        </member>
+        <member name="M:Weswen.Utils.ThrowIfParameterNull(System.ValueTuple{System.Object,System.String}[])">
+            <summary>
+            Helper for throwing <see cref="T:System.ArgumentNullException"/> for
+            multiple parameters.
+            </summary>
+            <param name="parameters">Parameters to test.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Weswen.Utils.ThrowIfNull(System.Object[])">
+            <summary>
+            Helper for throwing <see cref="T:System.NullReferenceException"/> for
+            multiple objects.
+            </summary>
+            <param name="objectsToTest">Objects to test.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:Weswen.Utils.CreateListWithRandomData``1">
+            <summary>
+            Creates a collection filled with random data.
+            </summary>
+            <typeparam name="T">Types that are stored in the collection.</typeparam>
+            <returns>Collection filled with random data.</returns>
+        </member>
+        <member name="M:Weswen.Utils.CreateListWithRandomData``1(System.Int32)">
+            <summary>
+            Creates a collection filled with random data.
+            </summary>
+            <typeparam name="T">Types that are stored in the collection.</typeparam>
+            <param name="count">Number of elements to put into the collection.</param>
+            <returns>Collection filled with random data.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"/>
+        </member>
+        <member name="M:Weswen.Utils.CreateRandomData(System.Type[])">
+            <summary>
+            Creates random data based on the types passed in.
+            </summary>
+            <param name="types">Types to generate the data for.</param>
+            <returns>An array of objects generated by <see cref="T:Weswen.Generator"/>.</returns>
+        </member>
+        <member name="M:Weswen.Utils.CreateRandomString(System.Int32,System.String)">
+            <summary>
+            Creates a random string out of allowed characters of given length.
+            </summary>
+            <param name="length">Length of the string to generate.</param>
+            <param name="allowedCharacters">Characters that will be used in the generation.</param>
+            <returns>Random string out of allowed characters.</returns>
+        </member>
+        <member name="M:Weswen.Utils.CreateRandomString(System.String)">
+            <summary>
+            Creates a random string out of allowed characters of random length.
+            </summary>
+            <param name="allowedCharacters">Characters that will be used in the generation.</param>
+            <returns>Random string out of allowed characters.</returns>
+        </member>
+        <member name="M:Weswen.Utils.PercentageRoll(System.Double)">
+            <summary>
+            Does a roll and returns true if the value is within the given percentage.
+            </summary>
+            <param name="percentage">Percent chance for success.</param>
+            <returns>If the value that was rolled is success.</returns>
+        </member>
+        <member name="M:Weswen.Utils.TraverseThroughObjectsHierarchy(System.Object,System.Func{Weswen.TraversionInfo,System.Boolean},System.Boolean,System.Boolean,System.Reflection.BindingFlags)">
+            <summary>
+            Traverses through the object's hierarchy and provides information about
+            each <see cref="T:Weswen.Prield"/> in the hierarchy as it goes through it.
+            </summary>
+            <param name="obj">Object to traverse.</param>
+            <param name="objectChanged"><para>Method that gets called every time a new object
+            in the hierarchy is being processed.</para>
+            <para>If it returns true, the recursion will occur.</para>
+            <para>There are specific cases where the return value won't matter: call on the
+            root element (because it always has to go into recursion) and when the
+            prield's value cannot be read because its parent is null.</para></param>
+            <param name="skipBackingFields">Should the backing fields of properties be skipped or not?</param>
+            <param name="skipNullPrieldsChildren">Should there be iteration through prield's
+            children if its value is null?</param>
+            <param name="flags"><see cref="T:System.Reflection.BindingFlags"/> used for accessing the fields and properties.</param>
+            <exception cref="T:System.StackOverflowException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Weswen.Utils.TryGetInstantiatedObject``1">
+            <summary>
+            Tries to get an instance of the type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">Type to get the instance for.</typeparam>
+            <returns>Instance of type <typeparamref name="T"/> or null.</returns>
+        </member>
+        <member name="M:Weswen.Utils.InvokeConstructor``1(System.Type[],System.ValueTuple{System.Int32,System.Object}[])">
+            <summary>
+            Generates an instance from a constructor for the type <typeparamref name="T"/>
+            using the <paramref name="constructorParameterTypes"/> and calls it with
+            values that were passed in by index. those that weren't passed in,
+            it generates using the <see cref="T:Weswen.Generator"/>.
+            </summary>
+            <typeparam name="T">Type to get the instance for.</typeparam>
+            <param name="constructorParameterTypes">Types that need to be passed into
+            the constructor.</param>
+            <param name="constructorData">Some or all of the data that goes into the constructor</param>
+            <returns>Instance of type <typeparamref name="T"/></returns>
+            <exception cref="T:System.MemberAccessException"/>
+            <exception cref="T:System.MethodAccessException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.Reflection.TargetInvocationException"/>
+            <exception cref="T:System.Reflection.TargetParameterCountException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+        </member>
+        <member name="M:Weswen.Utils.CreateCollection``1">
+            <summary>
+            Creates a collection like <see cref="T:System.Collections.Generic.HashSet`1"/>. In that case, type
+            parameter (<typeparamref name="T"/>) would be <see cref="T:System.Collections.Generic.HashSet`1"/>.
+            <para>This works for collections that are arrays (assignable from 
+            <see cref="T:System.Array"/>) or that have one type parameter and can be created
+            using constructor that takes in <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</para>
+            </summary>
+            <typeparam name="T">Collection type to create, e.g. <see cref="T:System.Collections.Generic.HashSet`1"/>.</typeparam>
+            <returns>List with data made using <see cref="M:Weswen.Utils.CreateListWithRandomData``1"/>.</returns>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.MemberAccessException"/>
+            <exception cref="T:System.MethodAccessException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.Reflection.TargetInvocationException"/>
+            <exception cref="T:System.Reflection.TargetParameterCountException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Weswen.Utils.FindType(System.String)">
+            <summary>
+            Searches for a type inside the current <see cref="T:System.Reflection.Assembly"/> and all of the referenced ones.
+            </summary>
+            <param name="typeName">Name of the type to find (can be name, full name or
+            assembly qualified name).</param>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="T:Weswen.InclusionOptions">
+            <summary>
+            Specifies interval inclusion.
+            </summary>
+        </member>
+        <member name="F:Weswen.InclusionOptions.BothInclusive">
+            <summary>
+            Both left and right are included.
+            </summary>
+        </member>
+        <member name="F:Weswen.InclusionOptions.OnlyLeftInclusive">
+            <summary>
+            Only left is included, right is excluded.
+            </summary>
+        </member>
+        <member name="F:Weswen.InclusionOptions.OnlyRightInclusive">
+            <summary>
+            Only right is included, left is excluded.
+            </summary>
+        </member>
+        <member name="F:Weswen.InclusionOptions.BothExclusive">
+            <summary>
+            Both left and right are excluded.
+            </summary>
+        </member>
+        <member name="T:Weswen.CollectionInfo">
+            <summary>
+            Information about a type - is it a collection and if it is, which
+            types does that collection work with?
+            </summary>
+        </member>
+        <member name="P:Weswen.CollectionInfo.IsCollection">
+            <summary>
+            Defines if the passed in type is IEnumerable (if it
+            implements <see cref="T:System.Collections.IEnumerable"/>).
+            <para>(Arrays also implement <see cref="T:System.Collections.IEnumerable"/>).</para>
+            </summary>
+        </member>
+        <member name="P:Weswen.CollectionInfo.IsArray">
+            <summary>
+            Defines if the passed in type is an array.
+            </summary>
+        </member>
+        <member name="P:Weswen.CollectionInfo.ArrayType">
+            <summary>
+            If the passed in type is an array, this will
+            be the type of that array.
+            <para>For example, if the passed in type is of type int[],
+            this collection will contain the type int.</para>
+            </summary>
+        </member>
+        <member name="P:Weswen.CollectionInfo.CollectionTypes">
+            <summary>
+            If the passed in type is an IEnumerable, this will be the
+            collection of types for that IEnumerable. <para>For example,
+            if the passed in type is of type Dictionary&lt;int, string&gt;,
+            this collection will contain types int and string.</para>
+            </summary>
+        </member>
+        <member name="M:Weswen.CollectionInfo.#ctor(System.Type)">
+            <summary>
+            Provides information about a type.
+            </summary>
+            <param name="typeToTest">Type to test if it is a collection.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="T:Weswen.Generator">
+            <summary>
+            Used to generate data (usually random) for fields and properties.
+            </summary>
+        </member>
+        <member name="P:Weswen.Generator.Instance">
+            <summary>
+            Singleton instance of this class.
+            </summary>
+        </member>
+        <member name="P:Weswen.Generator.InitializeHierarchy">
+            <summary>
+            Defines when should the generator go through the object's
+            hierarchy and initialize all of the objects found in it.
+            <para>By default, hierarchy won't be initialized if the object's type
+            is primitive, a collection, or one of the following types:
+            <see cref="T:System.String"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.TimeSpan"/></para>
+            <para>If this is set to null, hierarchy will be always initialized.</para>
+            </summary>
+        </member>
+        <member name="P:Weswen.Generator.SkipBackingFields">
+            <summary>
+            Defines if the generator should skip the backing fields while generating
+            values. This means that properties that don't have set method can still
+            be randomly generated.
+            </summary>
+        </member>
+        <member name="M:Weswen.Generator.Generate``1">
+            <summary>
+            Method used for generating an instance of type <typeparamref name="T"/>
+            with all of its fields and properties set using the <see cref="T:Weswen.TypeSpec`1"/>s.
+            </summary>
+            <typeparam name="T">Type that will be generated.</typeparam>
+            <returns>Instance of type <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:Weswen.Generator.SetTypeSpec``1(Weswen.TypeSpec{``0})">
+            <summary>
+            Defines or overrides the type spec for the type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">Type that the type spec is being defined for.</typeparam>
+            <param name="typeSpec">Type spec to define or override.</param>
+        </member>
+        <member name="M:Weswen.Generator.SetTypeSpec``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Defines or overrides the type spec for the type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">Type that the type spec is being defined for.</typeparam>
+            <param name="generator">Generator that will be used in the <see cref="T:Weswen.TypeSpec`1"/>.</param>
+        </member>
+        <member name="M:Weswen.Generator.One``1">
+            <summary>
+            Gets one instance of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">Type to get the instance for.</typeparam>
+            <returns>Instance of type <typeparamref name="T"/></returns>
+        </member>
+        <member name="M:Weswen.Generator.Many``1">
+            <summary>
+            Gets random amount of instances of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">Type to get a collection for.</typeparam>
+            <returns>Collection of items of type <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:Weswen.Generator.Many``1(System.Int64,System.Boolean,System.IProgress{System.Double})">
+            <summary>
+            Gets <paramref name="count"/> instances of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">Type to get a collection for.</typeparam>
+            <param name="count">Number of items that will be put into the collection.
+            <para>Has to be at least 0.</para></param>
+            <param name="differentEachTime">If this is false, the object will be created once and repeated
+            until the collection is filled.</param>
+            <param name="progress">Progress callback.</param>
+            <returns>Collection of items of type <typeparamref name="T"/>.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"/>
+        </member>
+        <member name="T:Weswen.Prield">
+            <summary>
+            Pr(operty) or (F)ield - encapsulates the <see cref="T:System.Reflection.MemberInfo"/> and
+            exposes the getter and setter.
+            </summary>
+        </member>
+        <member name="P:Weswen.Prield.IsProperty">
+            <summary>
+            Defines whether or not this <see cref="T:Weswen.Prield"/> is a property.
+            </summary>
+        </member>
+        <member name="P:Weswen.Prield.IsIndexer">
+            <summary>
+            Defines whether or not this <see cref="T:Weswen.Prield"/> is an indexer.
+            </summary>
+        </member>
+        <member name="P:Weswen.Prield.DeclaringType">
+            <summary>
+            Gets the declaring type of the <see cref="P:Weswen.Prield.Member"/>.
+            </summary>
+        </member>
+        <member name="P:Weswen.Prield.ReflectedType">
+            <summary>
+            Gets the reflected type of the <see cref="P:Weswen.Prield.Member"/>.
+            </summary>
+        </member>
+        <member name="P:Weswen.Prield.Type">
+            <summary>
+            Gets <see cref="P:Weswen.Prield.Type"/> of the property or field.
+            </summary>
+        </member>
+        <member name="P:Weswen.Prield.Member">
+            <summary>
+            The encapsulated <see cref="T:System.Reflection.PropertyInfo"/> or <see cref="T:System.Reflection.FieldInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Weswen.Prield.#ctor(System.Reflection.MemberInfo)">
+            <summary>
+            Sets up the field or property.
+            </summary>
+            <param name="member"><see cref="T:System.Reflection.PropertyInfo"/> or <see cref="T:System.Reflection.FieldInfo"/>.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+        </member>
+        <member name="M:Weswen.Prield.GetValue(System.Object,System.Object[])">
+            <summary>
+            Gets a value from the target's field or property.
+            </summary>
+            <param name="target">Object whose field or property value will be fetched.</param>
+            <param name="indexerParams">If <see cref="P:Weswen.Prield.Member"/> is an indexer, pass the index parameters here</param>
+            <returns>Value from the field or property</returns>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.Reflection.TargetException"/>
+            <exception cref="T:System.Reflection.TargetParameterCountException"/>
+            <exception cref="T:System.MethodAccessException"/>
+            <exception cref="T:System.Reflection.TargetInvocationException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.FieldAccessException"/>
+        </member>
+        <member name="M:Weswen.Prield.SetValue(System.Object,System.Object,System.Object[])">
+            <summary>
+            Sets a value of the target's field or property.
+            </summary>
+            <param name="target">Object whose field or property value will be set.</param>
+            <param name="value">Value to set the target's property to.</param>
+            <param name="indexerParams">If <see cref="P:Weswen.Prield.Member"/> is an indexer, pass the index parameters here</param>
+            <returns>Value from the field or property</returns>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.Reflection.TargetException"/>
+            <exception cref="T:System.Reflection.TargetParameterCountException"/>
+            <exception cref="T:System.MethodAccessException"/>
+            <exception cref="T:System.Reflection.TargetInvocationException"/>
+            <exception cref="T:System.FieldAccessException"/>
+        </member>
+        <member name="M:Weswen.Prield.ToString">
+            <summary>
+            String representation of the <see cref="T:Weswen.Prield"/>.
+            </summary>
+            <returns>/>String representation of the <see cref="T:Weswen.Prield"/>.</returns>
+        </member>
+        <member name="M:Weswen.Prield.Generate(System.Collections.Generic.IEnumerable{System.Reflection.MemberInfo})">
+            <summary>
+            Generates a list of <see cref="T:Weswen.Prield"/>s out of a collection of <see cref="T:System.Reflection.MemberInfo"/>.
+            </summary>
+            <param name="members">Members of a type, for example a collection of <see cref="T:System.Reflection.FieldInfo"/>.</param>
+            <returns>List of <see cref="T:Weswen.Prield"/>s.</returns>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="T:Weswen.TraversionInfo">
+            <summary>
+            Information about the object state during the hierarchy traversion.
+            </summary>
+        </member>
+        <member name="F:Weswen.TraversionInfo.TopLevel">
+            <summary>
+            Defines the level of the root object in the hierarchy.
+            </summary>
+        </member>
+        <member name="P:Weswen.TraversionInfo.FirstCall">
+            <summary>
+            Determines if this is the traversion just started (current object
+            is the top level object in the hierarchy).
+            </summary>
+        </member>
+        <member name="P:Weswen.TraversionInfo.ValueWasFound">
+            <summary>
+            Determines if the <see cref="P:Weswen.TraversionInfo.CurrentPrield"/> has a value.
+            </summary>
+        </member>
+        <member name="P:Weswen.TraversionInfo.Parent">
+            <summary>
+            Value of the current prield's parent.
+            </summary>
+        </member>
+        <member name="P:Weswen.TraversionInfo.CurrentObj">
+            <summary>
+            Value of the current prield.
+            </summary>
+        </member>
+        <member name="P:Weswen.TraversionInfo.CurrentPrield">
+            <summary>
+            Current prield in the hierarchy.
+            </summary>
+        </member>
+        <member name="P:Weswen.TraversionInfo.Level">
+            <summary>
+            Current object's hierarchy level. <para>1 is the top level and it
+            increases as traversion through the hierarchy gets deeper.</para>
+            </summary>
+        </member>
+        <member name="M:Weswen.TraversionInfo.#ctor(System.Object,System.Object,Weswen.Prield,System.Int32)">
+            <summary>
+            Only constructor.
+            </summary>
+            <param name="parent">Value of the current prield's parent.</param>
+            <param name="currentObj">Value of the current prield.</param>
+            <param name="currentPrield">Current prield in the hierarchy.</param>
+            <param name="level">Current object's hierarchy level.</param>
+        </member>
+        <member name="M:Weswen.TraversionInfo.ToString">
+            <summary>
+            String representation of <see cref="T:Weswen.TraversionInfo"/>.
+            </summary>
+            <returns>String representation of <see cref="T:Weswen.TraversionInfo"/>.</returns>
+        </member>
+        <member name="T:Weswen.TypeSpec`1">
+            <summary>
+            Specifies information about a type and holds
+            history of values of its type.
+            </summary>
+        </member>
+        <member name="P:Weswen.TypeSpec`1.HistoryOfValues">
+            <summary>
+            Collection that holds values of type T.
+            </summary>
+        </member>
+        <member name="P:Weswen.TypeSpec`1.LastValue">
+            <summary>
+            Gets the last value from the <see cref="P:Weswen.TypeSpec`1.HistoryOfValues"/>.
+            </summary>
+        </member>
+        <member name="P:Weswen.TypeSpec`1.Generator">
+            <summary>
+            Used to generate an instance of this type.<para>By default returns the result
+            of <see cref="M:Weswen.Utils.TryGetInstantiatedObject``1"/>), or, if <typeparamref name="T"/>
+            is assignable from <see cref="T:System.Collections.IEnumerable"/> with one generic argument, it creates
+            a collection using <see cref="M:Weswen.Utils.CreateListWithRandomData``1"/>.</para>
+            </summary>
+        </member>
+        <member name="P:Weswen.TypeSpec`1.ConstructorParameterTypes">
+            <summary>
+            Defines which constructor should be used for creating
+            instance of this object (if left null, <see cref="P:Weswen.TypeSpec`1.Generator"/>
+            will be used for generating an instance).
+            </summary>
+        </member>
+        <member name="M:Weswen.TypeSpec`1.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Weswen.TypeSpec`1.GetInstance(System.ValueTuple{System.Int32,System.Object}[])">
+            <summary>
+            Creates an instance of an object of type <typeparamref name="T"/>. If the
+            <see cref="P:Weswen.TypeSpec`1.ConstructorParameterTypes"/> are null, the <see cref="P:Weswen.TypeSpec`1.Generator"/>
+            will be used for generating the instance. If it isn't null, you can specify some
+            or all of the parameters using the parameter <paramref name="constructorData"/>.
+            </summary>
+            <param name="constructorData">Data passed into the constructor. You can pass all of the
+            elements here, or leave some to be generated for you using the <see cref="T:Weswen.Generator"/>.</param>
+            <returns>Instance of type <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:Weswen.TypeSpec`1.GenerateValue">
+            <summary>
+            Uses the <see cref="P:Weswen.TypeSpec`1.Generator"/> to generate the value or
+            assigns a default value if the <see cref="P:Weswen.TypeSpec`1.Generator"/> is null.
+            </summary>
+            <returns>Instance of type <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="T:Weswen.TypeSpecCollection">
+            <summary>
+            Collection of <see cref="T:Weswen.TypeSpec`1"/>s.
+            </summary>
+        </member>
+        <member name="F:Weswen.TypeSpecCollection.typeSpecs">
+            <summary>
+            Since <see cref="T:Weswen.TypeSpec`1"/> is a generic class,
+            a collection of objects will be needed to store diferrent
+            <see cref="T:Weswen.TypeSpec`1"/>s.
+            </summary>
+        </member>
+        <member name="F:Weswen.TypeSpecCollection.getLastValueMethod">
+            <summary>
+            Reference to the <see cref="M:Weswen.TypeSpecCollection.GetLastValue``1"/> method.
+            </summary>
+        </member>
+        <member name="F:Weswen.TypeSpecCollection.generateValueMethod">
+            <summary>
+            Reference to the <see cref="M:Weswen.TypeSpecCollection.GenerateValue``1"/> method.
+            </summary>
+        </member>
+        <member name="F:Weswen.TypeSpecCollection.addObjectToTypeSpecMethod">
+            <summary>
+            Reference to the <see cref="M:Weswen.TypeSpecCollection.AddObjectToTypeSpec``1(``0)"/> method.
+            </summary>
+        </member>
+        <member name="M:Weswen.TypeSpecCollection.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Weswen.TypeSpecCollection.SetTypeSpec``1(Weswen.TypeSpec{``0})">
+            <summary>
+            Used to define type spec for a <see cref="T:System.Type"/>.
+            </summary>
+            <typeparam name="T">Type to specify.</typeparam>
+            <param name="typeSpec">Information about a <see cref="T:System.Type"/>.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Weswen.TypeSpecCollection.SetTypeSpec``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Used to define type spec for a <see cref="T:System.Type"/>.
+            </summary>
+            <typeparam name="T">Type to specify.</typeparam>
+            <param name="generator">Generator that will be used in the <see cref="T:Weswen.TypeSpec`1"/>.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Weswen.TypeSpecCollection.GetTypeSpec``1">
+            <summary>
+            Tries to get the <see cref="T:Weswen.TypeSpec`1"/> from <see cref="F:Weswen.TypeSpecCollection.typeSpecs"/>.
+            If it doesn't find it, a new one is created, added to the list and then returned.
+            </summary>
+            <typeparam name="T">Type whose spec is required.</typeparam>
+            <returns><see cref="T:Weswen.TypeSpec`1"/> for the type <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:Weswen.TypeSpecCollection.GetLastValue``1">
+            <summary>
+            Gets the last stored value of type <typeparamref name="T"/>
+            stored into the <see cref="T:Weswen.TypeSpec`1"/>.
+            </summary>
+            <typeparam name="T">Type to fetch.</typeparam>
+            <returns><see cref="P:Weswen.TypeSpec`1.LastValue"/></returns>
+        </member>
+        <member name="M:Weswen.TypeSpecCollection.GetLastValue(System.Type)">
+            <summary>
+            Gets the last stored value of the given <paramref name="typeSpecType"/>.
+            </summary>
+            <param name="typeSpecType">Type to get the value for.</param>
+            <returns>Last value stored into the type spec for given type.</returns>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Weswen.TypeSpecCollection.AddObjectToTypeSpec``1(``0)">
+            <summary>
+            Adds an object of type <typeparamref name="T"/> to the
+            <see cref="P:Weswen.TypeSpec`1.HistoryOfValues"/> collection.
+            </summary>
+            <typeparam name="T">Type of object to add.</typeparam>
+            <param name="objectToAdd">Object to add to the <see cref="T:Weswen.TypeSpec`1"/>.</param>
+        </member>
+        <member name="M:Weswen.TypeSpecCollection.AddObjectToTypeSpec(System.Type,System.Object)">
+            <summary>
+            Adds an object of the specified type to the
+            <see cref="P:Weswen.TypeSpec`1.HistoryOfValues"/> collection.
+            </summary>
+            <param name="type">Type of object to add.</param>
+            <param name="objectToAdd">Object to add to the <see cref="T:Weswen.TypeSpec`1"/>.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Weswen.TypeSpecCollection.GenerateValue``1">
+            <summary>
+            Generates an instance of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">Type to create an instance for.</typeparam>
+            <returns>Instance of type <typeparamref name="T"/></returns>
+        </member>
+        <member name="M:Weswen.TypeSpecCollection.GenerateValue(System.Type)">
+            <summary>
+            Generates an instance of the specified type.
+            </summary>
+            <param name="type">Type to create an instance for.</param>
+            <returns>Instance of the specified type</returns>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="T:Weswen.Serializer">
+            <summary>
+            Specifies which serializer should be used.
+            </summary>
+        </member>
+        <member name="F:Weswen.Serializer.Binary">
+            <summary>
+            Use the <see cref="T:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter"/> for serialization.
+            </summary>
+        </member>
+        <member name="F:Weswen.Serializer.XmlStream">
+            <summary>
+            Use the <see cref="T:System.Xml.Serialization.XmlSerializer"/> for serialization.
+            </summary>
+        </member>
+        <member name="F:Weswen.Serializer.XmlString">
+            <summary>
+            Use the <see cref="T:Weswen.XmlStringSerializer"/> for serialization.
+            </summary>
+        </member>
+        <member name="F:Weswen.Serializer.Json">
+            <summary>
+            Use the <see cref="T:Newtonsoft.Json.JsonConvert"/> for serialization.
+            </summary>
+        </member>
+        <member name="T:Weswen.XmlStringSerializer">
+            <summary>
+            Used for serializing an object into an XML string or
+            deserializing an XML string into an object.
+            </summary>
+        </member>
+        <member name="M:Weswen.XmlStringSerializer.Deserialize``1(System.String)">
+            <summary>
+            Deserializes an XML string into an object using <see cref="P:System.Text.Encoding.Unicode"/>.
+            </summary>
+            <typeparam name="T">Object to turn the XML into.</typeparam>
+            <param name="data">XML string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Weswen.XmlStringSerializer.Deserialize``1(System.String,System.Text.Encoding)">
+            <summary>
+            Deserializes an XML string into an object using the specified <paramref name="encoding"/>.
+            </summary>
+            <typeparam name="T">Object to turn the XML into.</typeparam>
+            <param name="data">XML string.</param>
+            <param name="encoding">Encoding of the string.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.Text.EncoderFallbackException"/>
+        </member>
+        <member name="M:Weswen.XmlStringSerializer.Serialize(System.Object)">
+            <summary>
+            Serializes an item into an XML string.
+            </summary>
+            <param name="item">The item to serialize into the XML.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="T:Weswen.WordManager">
+            <summary>
+            Class used to work with Word Documents (docx files).
+            </summary>
+        </member>
+        <member name="M:Weswen.WordManager.#ctor(System.String)">
+            <summary>
+            Initializes the manager with a path to the file.
+            </summary>
+            <param name="documentPath">Path to the Word Document.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Weswen.WordManager.#ctor(System.String,Weswen.IWordWrapper)">
+            <summary>
+            Initializes the manager with a path to the file and an implementation
+            of a <see cref="T:Weswen.IWordWrapper"/>.
+            </summary>
+            <param name="documentPath">Path to the Word Document.</param>
+            <param name="wordWrapper">Wrapper used for </param>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Weswen.WordManager.ChangeDocumentPath(System.String)">
+            <summary>
+            Changes the current document path to the specified one (unless it is the same as the current one).
+            <para>If the file exists, it will be loaded, otherwise, a new document will be created.</para>
+            </summary>
+            <param name="path">Path to the new file.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Weswen.WordManager.AddTables``1(System.Collections.Generic.IEnumerable{``0},System.IProgress{System.Double})">
+            <summary>
+            Inserts tables for each table model in the list.
+            </summary>
+            <typeparam name="T">Type decorated with <see cref="T:Weswen.TableModelAttribute"/>.</typeparam>
+            <param name="tableModels">List of instances of a class decorated with <see cref="T:Weswen.TableModelAttribute"/>.</param>
+            <param name="progress">Used to report the progress while adding tables.</param>
+        </member>
+        <member name="M:Weswen.WordManager.AddTable``1(``0,System.Boolean)">
+            <summary>
+            Inserts a table at the end of the document.
+            </summary>
+            <typeparam name="T">Type decorated with <see cref="T:Weswen.TableModelAttribute"/>.</typeparam>
+            <param name="tableModel">Instance of class decorated with <see cref="T:Weswen.TableModelAttribute"/>.</param>
+            <param name="pageBreakAfter">Should a page break be inserted after the table?</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.FormatException"/>
+        </member>
+        <member name="M:Weswen.WordManager.GetTableModels``1(System.IProgress{System.Double},System.String,System.Boolean)">
+            <summary>
+            Gets the table models based on the tables in the Word Document.
+            </summary>
+            <typeparam name="T">Type decorated with <see cref="T:Weswen.TableModelAttribute"/>.</typeparam>
+            <param name="progress">Used to report the progress while converting tables into models.</param>
+            <param name="whitespaceReplacement">What should any whitespace found be replaced with?</param>
+            <param name="trim">Should the whitespace at the beginning and end be trimmed?</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
